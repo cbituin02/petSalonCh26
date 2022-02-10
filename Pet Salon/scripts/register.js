@@ -23,7 +23,6 @@ function Pet(name,age,gender,breed,service){
     this.name=name;
     this.age=age;
     this.gender=gender;
-// 2/7/22 Session 3 Start
     this.breed=breed;
     this.service=service;
     
@@ -57,11 +56,19 @@ function showPetsCards(){
     for(let i=0;i<salon.pets.length;i++){
     //create the card
     //append the template into the HTML
-    document.getElementById("petList").innerHTML += createCard(salon.pets[i]);
+    document.getElementById("petList").innerHTML += createCard(salon.pets[i], i);
     }
 }
 
-function createCard(pet){
+function removePet(index){
+    if(index < salon.pets.length)
+    {
+        salon.pets.splice(index, 1);
+    }
+    showPetsCards();
+}
+
+function createCard(pet, index){
     return`
         <div class ="pet-card">
             <h3>${pet.name}</h3>
@@ -69,11 +76,10 @@ function createCard(pet){
             <p> Gender: ${pet.gender}<p>
             <p> Breed: ${pet.breed}</p>
             <p> Service: ${pet.service}</p>
+            <button onclick="rmeovePet(${index});">Remove</button>
         </div>
     `;
 }
-
-
 
 function init(){
 // create three pets using the constructor
@@ -83,4 +89,3 @@ salon.pets.push(scooby,scrappy); // push the element into the array
 showPetsCards();
 }
 window.onload=init;
-// 2/7/22 Session 3 End
