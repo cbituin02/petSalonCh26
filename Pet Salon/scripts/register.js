@@ -76,7 +76,7 @@ function createCard(pet, index){
             <p> Gender: ${pet.gender}<p>
             <p> Breed: ${pet.breed}</p>
             <p> Service: ${pet.service}</p>
-            <button onclick="rmeovePet(${index});">Remove</button>
+            <button onclick="removePet(${index});">Remove</button>
         </div>
     `;
 }
